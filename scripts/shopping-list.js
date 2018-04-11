@@ -96,10 +96,15 @@ const shoppingList = (function(){
     $('.js-shopping-list').on('click', '.js-item-delete', event => {
       // get the index of the item in store.items
       const id = getItemIdFromElement(event.currentTarget);
+      api.deleteItem(id, function () {
+        store.findAndDelete(id);
+        render();
+
+      });
       // delete the item
-      store.findAndDelete(id);
+      // 
       // render the updated shopping list
-      render();
+
     });
   }
   

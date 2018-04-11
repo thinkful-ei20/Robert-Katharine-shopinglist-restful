@@ -8,6 +8,15 @@ const api = (function () {
     $.getJSON(`${BASE_URL}/items`, callback);
   };
 
+  const deleteItem = function (id, callback) {
+    $.ajax ( {
+      url: `${BASE_URL}/items/${id}`,
+      method: 'DELETE',
+      contentType: 'application/json',
+      success: callback,
+    });
+  };
+
   const updateItem = function (id, updateData, callback) {
     $.ajax ( {
       url: `${BASE_URL}/items/${id}`,
@@ -38,7 +47,7 @@ const api = (function () {
     getItems,
     createItem,
     updateItem,
-
+    deleteItem,
   };
 
 }());
